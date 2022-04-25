@@ -16,3 +16,23 @@ no advertisable device →　https://www.bing.com/videos/search?q=no+advertisabl
 接続できたけど
 →ラズパイのほうで、OKを押さないといけない
 →時間が多少かかってる
+
+一旦、ラズパイ側の設定
+Bluetoothの互換モードを有効にする。
+→terminalで
+ cd /etc/systemd/system/bluetooth.target.wants
+ sudo nano bluetooth.services
+
+ ExecStart = .... の後ろに、スペースを入れて-Cを入れる
+
+ sudo reboot
+
+ sudo sdptool add SP
+
+ どの hciX が BL アダプタであるかを確認
+ sudo hcitool dev
+
+ sudo hciconfig hci0 piscan
+
+ raspiのBluetooth Macアドレス  
+ E4:5F:01:40:D4:D2  
