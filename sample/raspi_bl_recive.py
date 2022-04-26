@@ -23,11 +23,14 @@ advertise_service( server_sock, "AquaPiServer",
 #                  protocols = [ OBEX_UUID ]
                     )
 
+
 client_sock, client_info = server_sock.accept()
 
 while True:
     print("Waiting for connection on RFCOMM channel %d" % port)
+    
     #client_sock, client_info = server_sock.accept()
+
     print("Accepted connection from ", client_info)
 
     try:
