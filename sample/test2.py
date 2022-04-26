@@ -13,6 +13,7 @@ server_sock.listen(1)
 
 port = server_sock.getsockname()[1]
 
+#ラズパイのUUID
 uuid = "516825d8-c508-11ec-beba-ff7091cc9b2a"
 
 advertise_service( server_sock, "AquaPiServer",

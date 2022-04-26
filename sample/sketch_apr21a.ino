@@ -11,7 +11,7 @@
 
 BluetoothSerial SerialBT;
 
-String MACadd = "E4:5F:01:40:D4:D1";
+//String MACadd = "E4:5F:01:40:D4:D1";
 //uint8_t address[6]  = {0xAA, 0xBB, 0xCC, 0x11, 0x22, 0x33};
 //uint8_t address[6]  = {0x00, 0x1D, 0xA5, 0x02, 0xC3, 0x22};
 String name = "raspberrypi";
@@ -50,10 +50,10 @@ void setup() {
 
 void loop() {
   if (Serial.available()) {
-    SerialBT.print("xxxxxxxxxxxx");
+    SerialBT.print("xxx");
   }
   if (SerialBT.available()) {
-    Serial.write('efg');
+    Serial.write('yyy');
   }
   delay(20);
 }
