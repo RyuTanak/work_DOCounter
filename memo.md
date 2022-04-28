@@ -73,3 +73,16 @@ WiFiでPCとESP32のデータ送信を行う参考サイト
 → https://qiita.com/GANTZ/items/5be4ccd2f2d45d6bd36d  
 Bluetoothの自動接続が可能なコマンドがある参考サイト  
 → https://nwpct1.hatenablog.com/entry/2013/10/19/190029  
+
+4月28日(木)  
+enピンの動作確認  
+- まず、電気信号が送れていること→送れている  
+- High→LOWなのか、LOW→Highなのかどちらかわからないので、どちらも試す。  
+  →プルアップ回路を作成した時に成功した。
+  　Low→Highの時にENピンが起動する？
+  　具体的には磁石をつけて、離した瞬間にリセットがかかる。
+- deep_sleepの処理は今は必要なので、省略する。
+
+enピンの動作がうまくいったので、deep_sleepがされていることを確認する。  
+→loop処理でLEDを光らせて、deepsleepが動いていたらLEDは止まるはず。  
+ →esp_deep_sleep_start();でloop処理に入らないことを確認した。  
