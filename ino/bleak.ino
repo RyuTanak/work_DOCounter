@@ -20,6 +20,9 @@ bool deviceConnected = false;
 // send data
 int send_cnt = 0;
 
+// GPIO No
+int LED = 4;
+
 // Server Callbacks of Connection
 class funcServerCallbacks: public BLEServerCallbacks{
     void onConnect(BLEServer* pServer){
@@ -47,6 +50,10 @@ void doInitialize() {
 void setup() {
   // Initialize the pinMode
   doInitialize();
+
+  //LED点灯
+  pinMode(LED, OUTPUT);
+  digitalWrite(LED, HIGH);
 
   // Initialize the BLE environment
   BLEDevice::init(DEVICENAME);
@@ -77,15 +84,15 @@ void setup() {
   // Connection  
   Serial.println("Connection!");
 
-  delay(1000);
+  delay(3000);
+
+  Serial.println("deep_sleep start");
+  esp_deep_sleep_start();
 }
 
 void loop() {
-  Serial.println("deep_sleep start");
-  pCharacteristicTX->setValue("open");
-  pCharacteristicTX->notify();
+  //pCharacteristicTX->setValue("open");
+  //pCharacteristicTX->notify();
   
-  delay(1000);
-  esp_deep_sleep_start();
-  
+  //delay(1000);
 }

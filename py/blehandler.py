@@ -14,7 +14,7 @@ ESP32_CHARACTERISTIC_UUID = "2049779d-88a9-403a-9c59-c7df79e1dd7c"
 class BleHandler():
     """ble handler.
     """
-    SLEEP_TIME = 2
+    SLEEP_TIME = 0.1
     TIME_OUT = 20
     global logger
 
@@ -43,7 +43,6 @@ class BleHandler():
                 print(1)
                 time.sleep(5)
                 async with BleakClient(self.address, timeout=self.TIME_OUT, disconnected_callback=self._disconnect_callback) as client:
-                    
                     print(2)
                     if await client.is_connected():
                         print("Connect to device successfuly.")

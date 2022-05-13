@@ -36,9 +36,9 @@ class Mqtt():
     MQTT_PORT = 8883
     MQTT_TOPIC_PUB = "ksap-dooropencounter"
     MQTT_TOPIC_SUB = "ksap-dooropencounterSub"
-    MQTT_ROOTCA = "/home/pi/ダウンロード/AmazonRootCA1.pem"
-    MQTT_CERT = "/home/pi/ダウンロード/24cd46fe0c3978ba7525776b879c69f5ad83e3db755dab728a7103c921800474-certificate.pem.crt"
-    MQTT_PRIKEY = "/home/pi/ダウンロード/24cd46fe0c3978ba7525776b879c69f5ad83e3db755dab728a7103c921800474-private.pem.key"
+    MQTT_ROOTCA = "/home/pi/Downloads/AmazonRootCA1.pem"
+    MQTT_CERT = "/home/pi/Downloads/d809f41470b4a2d96ef70d807bbaabae3a27b7df436c049c34366bb90985d4fe-certificate.pem.crt"
+    MQTT_PRIKEY = "/home/pi/Downloads/d809f41470b4a2d96ef70d807bbaabae3a27b7df436c049c34366bb90985d4fe-private.pem.key"
 
     def __init__(self):
 
@@ -78,11 +78,14 @@ class Mqtt():
 
     #パブリッシュ（データ送信）
     def publish(self, json_msg):
-        #接続
-        if self.is_connected == False:
-            self.connect()
-        #MQTT送信
-        if self.is_connected:
+        try:
+            #接続
+            if self.is_connected == False:
+                self.connect()
+            #MQTT送信
+            if self.is_connected:
            
-           print("publish!!")
-           self.client.publish(self.MQTT_TOPIC_PUB ,json_msg)
+               print("publish!!")
+               self.client.publish(self.MQTT_TOPIC_PUB ,json_msg)
+        except:
+            print('publish 失敗')
